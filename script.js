@@ -35,4 +35,4 @@ fetch('https://jsonplaceholder.typicode.com/todos/103', {
     method: 'DELETE'
 })
 .then(response => response.json())
-.then(json => console.log(json))
+.then(json => console.log)
