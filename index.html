@@ -18,8 +18,17 @@
         </div>
     <div id="part2">
         <h3>Part 2: New To do</h3>
-        <p>View in Developer Tools Console</p>
-        <p>Notice that the data now has 201 entries</p>
+        <p>Post Request</p>
+        <form id="form" autocomplete="off">
+            <input type="text" id="todo" placeholder="todo" required>
+            <div id="wrapper">
+                <label for="yes_no_radio">accomplished?</label>
+                <input type="radio" id="done" name="yes_no">Yes</input>
+                <input type="radio" id="done" name="yes_no" checked>No</input>
+                <input type="submit" value="Post">
+                </div>
+        </form>
+        
     </div>
     <div id="part3">
         <h3>Part 3: Delete To do</h3>
@@ -31,4 +40,17 @@
             <a href="#part2"><li>Part 2</li></a>
         </ul>       
   </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      const form = document.getElementById('form')
+      form.addEventListener('submit',function(e){
+          e.preventDefault()
+          const todo = document.getElementById('todo').value
+          const done = document.getElementById('done').value
+
+          $.post('https://jsonplaceholder.typicode.com/todos/', {todo:todo, done:done}, function(data){
+              console.log(data)
+          })
+      })
+  </script>
 </html>
